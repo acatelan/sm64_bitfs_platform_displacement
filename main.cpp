@@ -241,26 +241,6 @@ void brute_normals(float spd) {
     }
     normals[omp_get_max_threads()] = ending_normal;
 
-<<<<<<< HEAD
-  OMP_FOR
-  for (int i = 0; i < omp_get_max_threads(); i++) {
-    Mario mario = *m;
-    Platform plat = *p;
-    for (float nx = normals[i]; nx <= normals[i + 1];
-         nx = nextafterf(nx, 2.0f)) {
-      float limit = powf(nx, 2) - 1.0f;
-
-      for (float nz = limit; nz <= limit * -1;
-           nz = nextafterf(nz, limit * -1 + 1)) {
-
-        float ny = sqrtf(1 - powf(nx, 2) - powf(nz, 2));
-
-        brute_position(&mario, &plat, spd, {nx, ny, nz});
-
-        fprintf(stderr, "Finished all normals for %.9f, %.9f, %.9f\n", nx, ny,
-                nz);
-      }
-=======
     OMP_FOR
     for (int i = 0; i < omp_get_max_threads(); i++) {
         Mario m;
@@ -277,7 +257,6 @@ void brute_normals(float spd) {
 			    fprintf(stderr, "Finished all normals for %.9f, %.9f, %.9f\n", nx, ny,
 				      	nz);
 			}
->>>>>>> bee32e086ec3c2978693feb793030f4e2bdf9d0b
 		}
 	}
 }
