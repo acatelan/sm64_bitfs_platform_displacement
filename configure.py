@@ -1,3 +1,4 @@
+#!/usr/bin/env python3 
 import sys
 from pathlib import Path
 
@@ -60,7 +61,7 @@ with open("build.ninja", "w") as f:
         description="Regenerating build script..."
     )
     
-    file.rule("compile", "$cxx $cxx_flags -MD -MF $out.d -c $in -o $out", 
+    file.rule("compile", "$cxx $cxx_flags -MMD -MF $out.d -c $in -o $out", 
         depfile="$out.d",
         description="Compiling $out"
     )
