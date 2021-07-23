@@ -18,7 +18,7 @@ if not proj_dir.joinpath("build.ninja").exists():
     subprocess.run(["python3", "configure.py"])
     
 try:
-    subprocess.run("clang++", stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+    subprocess.run(["clang++", "-v"], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
 except FileNotFoundError:
     print("You need to install clang.")
     print("To install clang:")
